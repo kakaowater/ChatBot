@@ -57,7 +57,7 @@ if __name__ == "__main__":
         except :
             continue
 
-        if input_text in ['끝', '꺼']:
+        if input_text in ['quit','끝', '꺼']:
             break
 
         else :
