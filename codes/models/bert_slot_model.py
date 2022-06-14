@@ -109,7 +109,7 @@ class BertSlotModel:
        
 
 ##################################################### TODO ################################################################
-        slots_score = [[None]*len(slots[i]) for i in range(y_slots.shape[0])]
+        #slots_score = np.array([[None]*len(slots[i]) for i in range(y_slots.shape[0])])
 # 지금은 slots_score가 None으로 이루어진 행렬입니다. 아래의 예시를 바탕으로 y_slots를 이용하여 slots_score를 만들어보세요.
 # 예시)
 #           입력 문장: 아이유 노래 재생
@@ -121,7 +121,8 @@ class BertSlotModel:
 #                       [0.00000094 0.99993575 0.00002988 0.00001607 0.00001725]]]
 #           slots_score : [[0.9950228  0.9998349  0.9999397  0.99993575]] -> 각 토큰의 슬롯에 대한 확률
 ###########################################################################################################################
-        
+        slots_score = np.array([[np.max(Slot) for Slot in y_slots[i]] for i in range(y_slots.shape[0])]) # y_slot 각 행렬에서 가장 큰 숫자를 뽑으려고
+
         return slots, slots_score
 
     def save(self, model_path):
